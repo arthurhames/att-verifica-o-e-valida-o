@@ -14,46 +14,44 @@ Dos digitos 4 a 7, extraímos o código do fabricante
 Os últimos dígitos representam o código do produto.
 */
 
-const paises = [
-    "Brasil",
-    "Alemanha",
-    "França",
-    "Itália",
-    "Espanha",
-    "Japão",
-    "Estados Unidos",
-    "Canadá",
-    "Austrália",
-    "China"
-];
-  
-const produtos = [
-    "Café em grãos",
-    "Chocolate amargo",
-    "Queijo brie",
-    "Azeite de oliva",
-    "Vinho tinto",
-    "Chá verde",
-    "Pasta de amendoim",
-    "Xarope de bordo",
-    "Mel orgânico",
-    "Molho de soja"
-];
-  
-const codigosEAN13 = [
-    "7891234567895",
-    "4001234567892",
-    "3011234567898",
-    "8001234567897",
-    "8411234567896",
-    "4901234567894",
-    "0011234567899",
-    "0601234567893",
-    "9311234567895",
-    "6901234567891"
-];
-
-
+const bancoDeDados = {
+    paises: [
+        { codigo: '789', nome: 'Brasil' },
+        { codigo: '690', nome: 'China' },
+        { codigo: '880', nome: 'Coreia do Sul' },
+        { codigo: '000', nome: 'Estados Unidos' },
+        { codigo: '400', nome: 'Alemanha' },
+        { codigo: '030', nome: 'Canadá' },
+        { codigo: '076', nome: 'Reino Unido' },
+        { codigo: '950', nome: 'Argentina' },
+        { codigo: '003', nome: 'França' },
+        { codigo: '073', nome: 'México' }
+    ],
+    fabricantes: [
+        { codigo: '7891', nome: 'Fabricante A' },
+        { codigo: '6902', nome: 'Fabricante B' },
+        { codigo: '8812', nome: 'Fabricante C' },
+        { codigo: '4001', nome: 'Fabricante D' },
+        { codigo: '9501', nome: 'Fabricante E' },
+        { codigo: '0301', nome: 'Fabricante F' },
+        { codigo: '0761', nome: 'Fabricante G' },
+        { codigo: '0031', nome: 'Fabricante H' },
+        { codigo: '0731', nome: 'Fabricante I' },
+        { codigo: '0131', nome: 'Fabricante J' }
+    ],
+    produtos: [
+        { codigoEAN: '78912', nome: 'Produto A', fabricante: 'Fabricante A', pais: 'Brasil' },
+        { codigoEAN: '69012', nome: 'Produto B', fabricante: 'Fabricante B', pais: 'China' },
+        { codigoEAN: '88012', nome: 'Produto C', fabricante: 'Fabricante C', pais: 'Coreia do Sul' },
+        { codigoEAN: '40012', nome: 'Produto D', fabricante: 'Fabricante D', pais: 'Alemanha' },
+        { codigoEAN: '95012', nome: 'Produto E', fabricante: 'Fabricante E', pais: 'Argentina' },
+        { codigoEAN: '03012', nome: 'Produto F', fabricante: 'Fabricante F', pais: 'Canadá' },
+        { codigoEAN: '07612', nome: 'Produto G', fabricante: 'Fabricante G', pais: 'Reino Unido' },
+        { codigoEAN: '00312', nome: 'Produto H', fabricante: 'Fabricante H', pais: 'França' },
+        { codigoEAN: '07312', nome: 'Produto I', fabricante: 'Fabricante I', pais: 'México' },
+        { codigoEAN: '01312', nome: 'Produto J', fabricante: 'Fabricante J', pais: 'Estados Unidos' }
+    ]
+}
 function validarEAN (cod_barras){
     if(cod_barras.length !=13){
         return 'codigo invalido'
@@ -73,17 +71,34 @@ function validarEAN (cod_barras){
     if(digito != cod_barras[12]){
         return 'invalido'
     }
-
-
     return 'codigo valido'
 }
-
-let codigo = '7891234567895'
+let codigo = '789 1234 567895'
 let resultado = validarEAN(codigo)
 console.log(resultado)  
 
 function procuraProduto(cod_barras){
-    //separar os dados do meu cod de barras em pais, fabricante e produto
+    let país = cod_barras.slice(0, 3)
+    let fabricante = cod_barras.slice(3, 7)
+    let produto = cod_barras.slice(7, 12)
+
+    //procurando o pais
+    let nome_pais = bancoDeDados.paises.find((item)=>item.codigo==pais)
+    console.log(nome_pais.nome)
+
+
+
+    console.log(pais)
+    //separar os dados do meu cod de barras 
+    // em pais, fabricante e produto
     //procurar no banco de dados
-    //se existir, retorna, se nao existir, envia msg de nao encontrado
+
+    //se existir, retorna, se nao existir,
+    //envia msg de nao encontrado
+    /*if(existir){
+        return
+    }else{
+        return 'nao encontrado'
+    }
+    */
 }
