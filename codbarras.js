@@ -73,7 +73,7 @@ function validarEAN (cod_barras){
     }
     return 'codigo valido'
 }
-let codigo = '789 1234 567895'
+let codigo = '7891234567895'
 let resultado = validarEAN(codigo)
 console.log(resultado)  
 
