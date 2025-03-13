@@ -45,7 +45,6 @@ function validarCPF(cpf){
     }
     return true;
 }
-
 const cpf ='13478410916'.split('').map((e)=> parseInt(e));
 const cpfValido =validarCPF(cpf);
 console.log(cpfValido);
